@@ -16,13 +16,15 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
+vim.keymap.set('n', '<M-q>', '<cmd>lua vim.diagnostic.setloclist()<cr>')
+
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 local lspconfig = require('lspconfig')
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { 'clangd', 'pylsp' }
+local servers = { 'clangd', 'pylsp', 'gopls', 'yamlls' }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = function(client, bufnr)

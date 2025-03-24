@@ -2,10 +2,11 @@ return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     config = function () 
+      require("nvim-treesitter.install").prefer_git = true
       local configs = require("nvim-treesitter.configs")
 
       configs.setup({
-          ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "elixir", "heex", "javascript", "html" },
+          ensure_installed = { "c", "lua", "javascript", "html", "go", "yaml" },
           sync_install = false,
           highlight = { enable = true },
           indent = { enable = true },  

@@ -14,6 +14,9 @@ return {
           insert = "<C-q>",
         },
       },
+      window = {
+        width = 80,
+      },
     },
     -- See Commands section for default commands if you want to lazy load on them
   },

@@ -1,0 +1,3 @@
+syntax = "Lua51"
+indent_style = "Spaces"
+indent_size = 2

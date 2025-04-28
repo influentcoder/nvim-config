@@ -7,6 +7,7 @@ vim.keymap.set('n', '<Leader>B', function() require('dap').set_breakpoint() end,
 vim.keymap.set('n', '<Leader>lp', function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end, { desc = 'DAP - Set Log Point' })
 vim.keymap.set('n', '<Leader>dr', function() require('dap').repl.open() end, { desc = 'DAP - Open REPL' })
 vim.keymap.set('n', '<Leader>dl', function() require('dap').run_last() end, { desc = 'DAP - Run Last' })
+vim.keymap.set('n', '<Leader>dx', function() require('dap').terminate() end, { desc = 'DAP - Terminate' })
 vim.keymap.set('n', '<Leader>dgt', function() require('dap-go').debug_test() end, { desc = 'DAP GO - Debug Test' })
 vim.keymap.set('n', '<Leader>dgl', function() require('dap-go').debug_last_test() end, { desc = 'DAP GO - Debug Last Test' })
 vim.keymap.set({'n', 'v'}, '<Leader>dh', function()

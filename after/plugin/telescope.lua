@@ -7,3 +7,4 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope - Help 
 vim.keymap.set('n', '<leader>fd', builtin.lsp_definitions, { desc = 'Telescope - Definitions' })
 vim.keymap.set('n', '<leader>fs', builtin.lsp_document_symbols, { desc = 'Telescope - Find Document Symbols' })
 vim.keymap.set('n', '<leader>fc', builtin.current_buffer_fuzzy_find, { desc = 'Telescope - Current Buffer Fuzzy Find' })
+vim.keymap.set('n', '<leader>fk', builtin.keymaps, { desc = 'Telescope - Keymaps' })

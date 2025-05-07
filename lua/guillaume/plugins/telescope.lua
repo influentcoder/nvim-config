@@ -7,6 +7,10 @@ return {
         i = {
           ["<M-Left>"] = "preview_scrolling_left",
           ["<M-Right>"] = "preview_scrolling_right",
+          ["<M-D>" ] = "delete_buffer",
+        },
+        n = {
+          ["<M-D>" ] = "delete_buffer",
         },
       },
     },

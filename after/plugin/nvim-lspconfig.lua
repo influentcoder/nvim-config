@@ -30,7 +30,7 @@ vim.keymap.set("n", "<leader>dv", function()
 end, { desc = "Toggle diagnostics virtual text" })
 
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
-local servers = { 'clangd', 'pylsp', 'gopls', 'yamlls', 'lua_ls' }
+local servers = { 'clangd', 'pylsp', 'gopls', 'yamlls', 'lua_ls', 'ts_ls', }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = function(client, bufnr)

@@ -32,13 +32,16 @@ end, { desc = "Toggle diagnostics virtual text" })
 -- Enable some language servers with the additional completion capabilities offered by nvim-cmp
 local servers = { 'clangd', 'pylsp', 'gopls', 'yamlls', 'lua_ls', 'ts_ls', }
 for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
+  local config = {
     on_attach = function(client, bufnr)
       -- Enable diagnostics
       vim.diagnostic.enable(true)
     end,
     capabilities = capabilities,
-    settings = {
+  }
+
+  if lsp == "pylsp" then
+    config.settings = {
       pylsp = {
         plugins = {
           pycodestyle = {
@@ -56,7 +59,9 @@ for _, lsp in ipairs(servers) do
         }
       }
     }
-  }
+  end
+
+  lspconfig[lsp].setup(config)
 end
 
 -- luasnip setup

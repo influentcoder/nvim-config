@@ -61,6 +61,19 @@ for _, lsp in ipairs(servers) do
     }
   end
 
+  if lsp == "lua_ls" then
+    config.settings = {
+      Lua = {
+        diagnostics = {
+          globals = { 'vim' },  -- Recognize 'vim' as a global variable
+        },
+        workspace = {
+          library = vim.api.nvim_get_runtime_file("", true),  -- Include Neovim runtime files
+        },
+      }
+    }
+  end
+
   lspconfig[lsp].setup(config)
 end
 

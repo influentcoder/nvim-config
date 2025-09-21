@@ -1,0 +1,40 @@
+name: Release on tag
+
+on:
+  push:
+    tags:
+      - 'v*'          # e.g. v1.0.0, v2025.09.21, etc.
+
+permissions:
+  contents: write     # required to create releases
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      # Optional: verify the asset exists
+      - name: Verify asset
+        run: |
+          test -f config.tar.gz || (echo "lazy.tar.gz missing" && exit 1)
+
+      # Optional: produce a checksum
+      - name: Create checksums
+        run: |
+          sha256sum config.tar.gz > lazy.tar.gz.sha256
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}                # the pushed tag
+          name: ${{ github.ref_name }}
+          generate_release_notes: true
+          files: |
+            config.tar.gz
+            config.tar.gz.sha256
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

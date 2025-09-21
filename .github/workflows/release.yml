@@ -19,7 +19,8 @@ jobs:
 
       - name: Create tarball of repository
         run: |
-          tar --exclude='.git' --exclude='.github' --exclude='config.tar.gz' -czf config.tar.gz .
+          tar --exclude='.git' --exclude='.github' -czf /tmp/config.tar.gz .
+          mv /tmp/config.tar.gz config.tar.gz
 
       # Optional: produce a checksum
       - name: Create checksums

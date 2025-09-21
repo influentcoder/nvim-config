@@ -21,8 +21,6 @@ vim.keymap.set('n', '<M-q>', '<cmd>lua vim.diagnostic.setloclist()<cr>')
 -- Add additional capabilities supported by nvim-cmp
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-local lspconfig = require('lspconfig')
-
 vim.diagnostic.config({ virtual_text = true })
 
 vim.keymap.set("n", "<leader>dv", function()
@@ -74,7 +72,8 @@ for _, lsp in ipairs(servers) do
     }
   end
 
-  lspconfig[lsp].setup(config)
+  vim.lsp.enable(lsp)
+  vim.lsp.config(lsp, config)
 end
 
 -- luasnip setup

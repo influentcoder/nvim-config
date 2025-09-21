@@ -17,10 +17,9 @@ jobs:
         with:
           fetch-depth: 0
 
-      # Optional: verify the asset exists
-      - name: Verify asset
+      - name: Create tarball of repository
         run: |
-          test -f config.tar.gz || (echo "lazy.tar.gz missing" && exit 1)
+          tar --exclude='.git' --exclude='.github' --exclude='config.tar.gz' -czf config.tar.gz .
 
       # Optional: produce a checksum
       - name: Create checksums

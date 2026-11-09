@@ -2,7 +2,7 @@
 
 My Neovim configuration, using [lazy.nvim](https://github.com/folke/lazy.nvim) for plugins.
 
-These steps set it up from scratch on **Debian 13** (x86_64). Differences for Debian 12 are called out where they matter.
+These steps set it up from scratch on **Debian 13** (x86_64).
 
 Apart from the system packages, everything installs into your home directory, mostly `~/.local/bin`. That's the standard place for per-user programs: it needs no `sudo`, and Debian's default `~/.profile` adds it to `PATH` when the folder exists.
 
@@ -53,7 +53,7 @@ Where FUSE isn't available, such as in a container, set `APPIMAGE_EXTRACT_AND_RU
 
 nvim-treesitter needs the `tree-sitter` CLI, version **0.26.1 or later**, to compile parsers. Debian's `tree-sitter-cli` package is too old.
 
-On Debian 13, download the prebuilt binary:
+Download the prebuilt binary:
 
 ```bash
 curl -fL https://github.com/tree-sitter/tree-sitter/releases/latest/download/tree-sitter-linux-x64.gz | gunzip > ~/.local/bin/tree-sitter
@@ -61,12 +61,6 @@ curl -fL https://github.com/tree-sitter/tree-sitter/releases/latest/download/tre
 
 ```bash
 chmod u+x ~/.local/bin/tree-sitter
-```
-
-On Debian 12, the prebuilt binary needs a newer glibc than Debian 12 has. Build it with Cargo instead, which needs [Rust](https://rustup.rs):
-
-```bash
-cargo install --locked tree-sitter-cli
 ```
 
 ## 4. This config

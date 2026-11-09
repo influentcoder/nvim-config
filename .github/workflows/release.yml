@@ -25,7 +25,7 @@ jobs:
       # Optional: produce a checksum
       - name: Create checksums
         run: |
-          sha256sum config.tar.gz > lazy.tar.gz.sha256
+          sha256sum config.tar.gz > config.tar.gz.sha256
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2

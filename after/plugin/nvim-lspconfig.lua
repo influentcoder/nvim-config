@@ -7,7 +7,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { buffer = bufnr, desc = "LSP - Go to declaration" })
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { buffer = bufnr, desc = "LSP - Go to implementation" })
     vim.keymap.set('n', 'go', vim.lsp.buf.type_definition, { buffer = bufnr, desc = "LSP - Go to type definition" })
-    vim.keymap.set('n', 'gr', vim.lsp.buf.references, { buffer = bufnr, desc = "LSP - Go to references" })
+    -- Without nowait, Neovim's built-in grn/grr/gra/... mappings delay gr by 'timeoutlen'
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, { buffer = bufnr, nowait = true, desc = "LSP - Go to references" })
     vim.keymap.set('n', 'gs', vim.lsp.buf.signature_help, { buffer = bufnr, desc = "LSP - Signature help" })
     vim.keymap.set('n', '<F2>', vim.lsp.buf.rename, { buffer = bufnr, desc = "LSP - Rename" })
     vim.keymap.set({ 'n', 'x' }, '<F3>', function() vim.lsp.buf.format({ async = true }) end, { buffer = bufnr, desc = "LSP - Format" })
@@ -25,20 +26,22 @@ end, { desc = "Toggle diagnostics virtual text" })
 
 local lsp_settings = {
   pylsp = {
-    plugins = {
-      pycodestyle = {
-        enabled = true,
+    pylsp = {
+      plugins = {
+        pycodestyle = {
+          enabled = true,
+        },
+        pyflakes = {
+          enabled = true,
+        },
+        pylint = {
+          enabled = true,
+        },
+        mccabe = {
+          enabled = true,
+        },
       },
-      pyflakes = {
-        enabled = true,
-      },
-      pylint = {
-        enabled = true,
-      },
-      mccabe = {
-        enabled = true,
-      },
-    }
+    },
   },
   rust_analyzer = {
     ["rust-analyzer"] = {

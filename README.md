@@ -91,12 +91,12 @@ nvim-tree shows file icons, which need a [Nerd Font](https://www.nerdfonts.com) 
 
 ## 7. Language servers (optional)
 
-Language servers give you completion, go-to-definition, diagnostics and so on. The config enables a server for each language below; install only the ones for the languages you use. If a server isn't installed, Neovim shows a "Spawning language server … failed" error when you open a file of that type; everything else keeps working.
+Language servers give you completion, go-to-definition, diagnostics and so on. The config enables a server for each language below; install only the ones for the languages you use. If a server isn't installed, that language just gets no completion or diagnostics; everything else keeps working. Depending on the server, Neovim either skips it silently or shows a "Spawning language server … failed" error.
 
 Some of them install through other tools:
 
 - [uv](https://docs.astral.sh/uv/): `curl -LsSf https://astral.sh/uv/install.sh | sh`
-- Node.js: `sudo apt install nodejs npm`, then `npm config set prefix ~/.local` so global packages land in `~/.local/bin`
+- Node.js: `sudo apt install nodejs npm`, then `npm config set prefix ~/.local` so global packages land in `~/.local/bin`. If you manage Node.js with [nvm](https://github.com/nvm-sh/nvm) instead, skip the prefix step: nvm already puts global packages on your `PATH`, and doesn't work with a custom prefix.
 - [Go](https://go.dev/doc/install), with `~/go/bin` on your `PATH`
 - [Rust](https://rustup.rs), through rustup
 
@@ -144,3 +144,17 @@ To see which servers are running for the current file:
 - **Plugins:** `:Lazy update`, then commit the updated `lazy-lock.json`.
 - **Parsers:** `:TSUpdate`.
 - **Neovim:** run the `curl` command from step 2 again.
+
+## Formatting
+
+Lua files are formatted with [StyLua](https://github.com/JohnnyMorganz/StyLua), using the settings in `.stylua.toml`. Install it with Cargo, which needs [Rust](https://rustup.rs):
+
+```bash
+cargo install --locked stylua
+```
+
+Then, from this folder:
+
+```bash
+stylua .
+```

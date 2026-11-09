@@ -22,7 +22,6 @@ jobs:
           tar --exclude='.git' --exclude='.github' -czf /tmp/config.tar.gz .
           mv /tmp/config.tar.gz config.tar.gz
 
-      # Optional: produce a checksum
       - name: Create checksums
         run: |
           sha256sum config.tar.gz > config.tar.gz.sha256
